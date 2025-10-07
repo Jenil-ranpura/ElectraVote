@@ -16,7 +16,7 @@ export default function Home() {
 
     let fetchCandidates = async () => {
         let token = getToken();
- 
+
         let res = await axios.get("http://localhost:3000/candidate", {
             headers: { Authorization: `Bearer ${token}` }
         });
@@ -43,9 +43,9 @@ export default function Home() {
 
             let token = getToken();
 
-            let res = await axios.post("http://localhost:3000/user/vote", 
-                {party: candidate.partyname},
-                {headers: {Authorization: `Bearer ${token}`}}
+            let res = await axios.post("http://localhost:3000/user/vote",
+                { party: candidate.partyname },
+                { headers: { Authorization: `Bearer ${token}` } }
             )
 
             console.log(res.data.response);

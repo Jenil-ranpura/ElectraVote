@@ -1,16 +1,22 @@
 import React, { Suspense, useEffect, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import Navbar from "../assets/components/Navbar";
-import About from "../assets/components/About";
-import Contact from "../assets/components/Contact";
 import Auth from "../assets/components/Auth";
-import AdminLogin from "../assets/components/AdminLogin";
 import Protected from "../assets/components/jwt/Protected";
-import Profile from "../assets/components/Profile";
-import Home from "../assets/components/Home";
-import Admin_dashboard from "../assets/components/Admin_dashboard";
 import Loader from "../assets/components/Loader/Loader";
 
+let About = React.lazy(() => import("../assets/components/About"));
+let Contact = React.lazy(() => import("../assets/components/Contact"));
+let AdminLogin = React.lazy(() => import("../assets/components/AdminLogin"));
+let Profile = React.lazy(() => import("../assets/components/Profile"));
+let Home = React.lazy(() => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(import("../assets/components/Home"));
+    }, 1000)
+  })
+});
+let Admin_dashboard = React.lazy(() => import("../assets/components/Admin_dashboard"));
 
 let App = () => {
   let [adminParty, setAdminParty] = useState("");

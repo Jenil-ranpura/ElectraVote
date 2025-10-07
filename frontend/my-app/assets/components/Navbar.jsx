@@ -10,7 +10,7 @@ export default function Navbar() {
   let nav = useNavigate();
 
   useEffect(() => {
-    if(isTokenExpired()) {
+    if (isTokenExpired()) {
       nav("/auth");
     }
   }, [])
@@ -28,15 +28,11 @@ export default function Navbar() {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-6">
-            <p className="text-gray-700 hover:text-blue- cursor-pointer" onClick={() => nav("/")}>
-              <New2 text="Home" />
-            </p>
-            <p className="text-gray-700 hover:text-blue- cursor-pointer" onClick={() => nav("/about")}>
-              <New2 text="About" />
-            </p>
-            <p className="text-gray-700 hover:text-blue- cursor-pointer" onClick={() => nav("/contact")}>
-              <New2 text="Contact" />
-            </p>
+            <div className="flex justify-between w-[400px]">
+              <New2 text="Home" click="/" />
+              <New2 text="About" click="/about" />
+              <New2 text="Contact" click="/contact" />
+            </div>
             {isTokenExpired() ? (
               <>
                 <p
@@ -55,7 +51,7 @@ export default function Navbar() {
             ) : (
               // Profile Icon
               <button onClick={() => nav("/profile")} className="text-gray-700 hover:text-blue-600 text-2xl cursor-pointer">
-                <FaUserCircle size={35}/>
+                <FaUserCircle size={35} />
               </button>
             )}
           </div>

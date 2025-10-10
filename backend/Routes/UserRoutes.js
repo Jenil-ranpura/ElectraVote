@@ -29,9 +29,7 @@ UserRouter.post("/user/vote", verifyToken, async (req, res) => {
 
         let candidate = await CandidateModel.findOne({state: state, partyname: party});
         let obj = {
-            name: user.name,
-            adharno: user.adharno,
-            phoneno: user.phoneno
+            votedId: user._id
         }
 
         candidate.votecount.push(obj);

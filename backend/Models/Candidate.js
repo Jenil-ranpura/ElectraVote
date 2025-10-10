@@ -20,26 +20,9 @@ let CandidateSchema = new mongoose.Schema({
     votecount: {
         type: [
             {
-                name: {
-                    type: String,
-                    required: true
-                },
-
-                adharno: {
-                    type: String,
-                    required: true,
-                    unique: true
-                },
-
-                phoneno: {
-                    type: String,
-                    required: true,
-                    unique: true
-                },
-
-                votedAt: {
-                    type: Date,
-                    default: Date.now
+                votedId: {
+                    type: mongoose.Schema.Types.ObjectId,
+                    ref: "user"
                 }
             }
         ],
